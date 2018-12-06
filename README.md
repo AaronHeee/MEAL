@@ -4,15 +4,21 @@
 
 This is the official `PyTorch` implementation for paper:
 
-**MEAL: Multi-Model Ensemble via Adversarial Learning** Zhiqiang Shen*, Zhankui He *, Xiangyang Xue
-AAAI Conference on Artificial Intelligence (AAAI) 2019
+**MEAL: Multi-Model Ensemble via Adversarial Learning** Zhiqiang Shen*, Zhankui He *, Xiangyang Xue.
+Thirty-Third AAAI Conference on Artificial Intelligence (AAAI), 2019.
 
-The key idea is distilling diverse knowledge from different trained (teacher) models. We use adversarial-based 
-learning strategy where we define a block-wise training loss to guide and optimize the predefined student network to recover 
-the knowledge in teacher models, and to promote the discriminator network to distinguish teacher vs. student features simultaneously.
+The key idea of this work is distilling diverse knowledge from different trained models (teachers) into a single student network, in order to *learn an ensemble of multiple models without incurring additional testing costs*. We use adversarial-based learning strategy where we define a block-wise training loss to guide and optimize the predefined student network to recover the knowledge in teacher models, and to promote the discriminator network to distinguish teacher vs. student features simultaneously.
 
-The student and teacher networks we implemented are listed in `\models`, and that is easy to add new network. Our 
-corresponding author is: [Dr. Zhiqiang Shen](http://zhiqiangshen.com)
+The student and teacher networks we implemented are listed in `\models`, and it is also easy to add new networks in our repo. The corresponding author of this paper is: [Dr. Zhiqiang Shen](http://zhiqiangshen.com).
+
+If you find this helps your research, please cite:
+
+	@inproceedings{Shen2019MEAL,
+		title = {MEAL: Multi-Model Ensemble via Adversarial Learning},
+		author = {Zhiqiang Shen, Zhankui He, Xiangyang Xue},
+		booktitle = {AAAI},
+		year = {2019}
+	}
 
 ## Quick Start
 - git clone this repo
@@ -39,3 +45,10 @@ I manually change the `lr` during training:
 - `0.001` for epoch `[a*250,a*350)`
 
 The factor `a` varies with number of teacher networks, between 1 and 2.
+
+## ImageNet model
+Our trained ResNet-50:
+
+| Top-1 (%) | Top-5 (%)  | Model
+|:-------|:-----:|:-----:|
+| 21.79 | 5.99| [Download (102.5M)](https://drive.google.com/open?id=1x6SUiPWbqIKtdF_XRtEBQuinRfHUiRvm) |
