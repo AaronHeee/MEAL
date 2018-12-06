@@ -12,7 +12,7 @@ learning strategy where we define a block-wise training loss to guide and optimi
 the knowledge in teacher models, and to promote the discriminator network to distinguish teacher vs. student features simultaneously.
 
 The student and teacher networks we implemented are listed in `\models`, and that is easy to add new network. Our 
-corresponding author is: [Dr. Zhiqiang Shen](zhiqiangshen.com)
+corresponding author is: [Dr. Zhiqiang Shen](http://zhiqiangshen.com)
 
 ## Quick Start
 - git clone this repo
