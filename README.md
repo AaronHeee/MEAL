@@ -4,8 +4,9 @@
 
 This is the official `PyTorch` implementation for paper:
 
-**MEAL: Multi-Model Ensemble via Adversarial Learning** Zhiqiang Shen*, Zhankui He *, Xiangyang Xue.
-Thirty-Third AAAI Conference on Artificial Intelligence (AAAI), 2019.
+**[MEAL: Multi-Model Ensemble via Adversarial Learning](https://arxiv.org/abs/1812.02425)** (AAAI 2019).
+
+[Zhiqiang Shen](http://zhiqiangshen.com)\*, [Zhankui He](https://aaronheee.github.io/)\*, [Xiangyang Xue](https://scholar.google.com/citations?user=DTbhX6oAAAAJ&hl=en).
 
 The key idea of this work is distilling diverse knowledge from different trained models (teachers) into a single student network, in order to *learn an ensemble of multiple models without incurring additional testing costs*. We use adversarial-based learning strategy where we define a block-wise training loss to guide and optimize the predefined student network to recover the knowledge in teacher models, and to promote the discriminator network to distinguish teacher vs. student features simultaneously.
 
@@ -47,8 +48,11 @@ I manually change the `lr` during training:
 The factor `a` varies with number of teacher networks, between 1 and 2.
 
 ## ImageNet model
-Our trained ResNet-50:
+Our trained ResNet-50 (**the accuracy is even comparable to PyTorch official [ResNet-152](https://pytorch.org/docs/stable/torchvision/models.html)**):
 
-| Top-1 (%) | Top-5 (%)  | Model
-|:-------|:-----:|:-----:|
-| 21.79 | 5.99| [Download (102.5M)](https://drive.google.com/open?id=1x6SUiPWbqIKtdF_XRtEBQuinRfHUiRvm) |
+|Models| Top-1 error (%) | Top-5 error (%)  | URL
+|:-------|:-----:|:-----:|:-----:|
+|ResNet-50 | 23.85 | 7.13| - |
+|ResNet-101 | 22.63 | 6.44| - |
+|ResNet-152 | 21.69 | 5.94| - |
+|**Our ResNet-50**| **21.79** | **5.99**| [Download (102.5M)](https://drive.google.com/open?id=1x6SUiPWbqIKtdF_XRtEBQuinRfHUiRvm) |
