@@ -4,7 +4,7 @@
 
 This is the official `PyTorch` implementation for paper:
 
-**[MEAL: Multi-Model Ensemble via Adversarial Learning](https://arxiv.org/abs/1812.02425)** (AAAI 2019).
+**[MEAL: Multi-Model Ensemble via Adversarial Learning](https://arxiv.org/abs/1812.02425)** (AAAI 2019, **Oral**).
 
 [Zhiqiang Shen](http://zhiqiangshen.com)\*, [Zhankui He](https://aaronheee.github.io/)\*, [Xiangyang Xue](https://scholar.google.com/citations?user=DTbhX6oAAAAJ&hl=en).
 
