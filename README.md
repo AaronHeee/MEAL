@@ -14,9 +14,9 @@ The student and teacher networks we implemented are listed in `\models`, and it 
 
 If you find this helps your research, please cite:
 
-	@inproceedings{Shen2019MEAL,
+	@inproceedings{shen2019MEAL,
 		title = {MEAL: Multi-Model Ensemble via Adversarial Learning},
-		author = {Zhiqiang Shen, Zhankui He, Xiangyang Xue},
+		author = {Shen, Zhiqiang and He, Zhankui and Xue, Xiangyang},
 		booktitle = {AAAI},
 		year = {2019}
 	}
