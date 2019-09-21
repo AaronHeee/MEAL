@@ -14,8 +14,6 @@ import torch.nn as nn
 import torch.nn.init as init
 import torch.backends.cudnn as cudnn
 
-from shake_shake_main import str2bool, load_model, get_cosine_annealing_scheduler
-
 
 def get_mean_and_std(dataset):
     '''Compute the mean and std value of dataset.'''

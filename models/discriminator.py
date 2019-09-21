@@ -2,6 +2,17 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+from torch.autograd import Function
+
+class GradReverse(Function):
+    def forward(self, x):
+        return x
+    
+    def backward(self, grad_output):
+        return (-grad_output)
+
+def grad_reverse(x):
+    return GradReverse()(x)
 
 class Discriminator(nn.Module):
     def __init__(self, outputs_size, K = 2):
@@ -21,11 +32,15 @@ class Discriminator(nn.Module):
         return out
 
 class Discriminators(nn.Module):
-    def __init__(self, output_dims):
+    def __init__(self, output_dims, grl):
         super(Discriminators, self).__init__()
         self.discriminators = [Discriminator(i) for i in output_dims]
+        self.grl = grl
     
     def forward(self, x):
-        out = [self.discriminators[i](x[i]) for i in range(len(self.discriminators))]
-        return out
+        if self.grl == True:
+            out = [self.discriminators[i](grad_reverse(x[i])) for i in range(len(self.discriminators))]
+        else:
+            out = [self.discriminators[i](x[i]) for i in range(len(self.discriminators))]
 
+        return out

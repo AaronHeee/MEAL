@@ -21,7 +21,6 @@ from models import *
 from models import discriminator
 from utils import progress_bar, get_model
 from loss import *
-from shake_shake_main import str2bool, load_model, get_cosine_annealing_scheduler
 
 # ================= Arugments ================ #
 
@@ -44,11 +43,9 @@ parser.add_argument('--out_dims', default="[5000,1000,500,200,10]", type=str, he
 parser.add_argument('--teacher_eval', default=0, type=int, help='use teacher.eval() or not')
 
 # model config
-parser.add_argument('--shake_forward', type=str2bool, default=True)
-parser.add_argument('--shake_backward', type=str2bool, default=True)
-parser.add_argument('--shake_image', type=str2bool, default=True)
 parser.add_argument('--depth', type=int, default=26)
 parser.add_argument('--base_channels', type=int, default=96)
+parser.add_argument('--grl', type=bool, default=False, help="gradient reverse layer")
 
 # run config
 parser.add_argument('--outdir', type=str, default="results")
@@ -61,20 +58,17 @@ parser.add_argument('--batch_size', type=int, default=128)
 parser.add_argument('--base_lr', type=float, default=0.2)
 parser.add_argument('--weight_decay', type=float, default=1e-4)
 parser.add_argument('--momentum', type=float, default=0.9)
-parser.add_argument('--nesterov', type=str2bool, default=True)
+parser.add_argument('--nesterov', type=bool, default=True)
 parser.add_argument('--lr_min', type=float, default=0)
+
 
 args = parser.parse_args()
 
 # ================= Config Collection ================ #
 
 model_config = OrderedDict([
-    ('arch', 'shake_shake'),
     ('depth', args.depth),
     ('base_channels', args.base_channels),
-    ('shake_forward', args.shake_forward),
-    ('shake_backward', args.shake_backward),
-    ('shake_image', args.shake_image),
     ('input_shape', (1, 3, 32, 32)),
     ('n_classes', 10),
     ('out_dims', args.out_dims),
@@ -169,7 +163,7 @@ print("dims:", dims)
 update_parameters = [{'params': student.parameters()}]
 
 if args.adv:
-    discriminators = discriminator.Discriminators(dims)
+    discriminators = discriminator.Discriminators(dims, grl=args.grl)
     for d in discriminators.discriminators:
         d = d.to(device)
         if device == "cuda":
