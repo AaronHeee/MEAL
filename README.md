@@ -1,7 +1,5 @@
 # MEAL: Multi-Model Ensemble via Adversarial Learning
 
-![CE9AAD0B-5819-4723-898E-846090EC8F51](https://ws3.sinaimg.cn/large/006tNbRwgy1fxwqjmvesvj31960j6q8s.jpg)
-
 This is the official `PyTorch` implementation for paper:
 
 **[MEAL: Multi-Model Ensemble via Adversarial Learning](https://arxiv.org/abs/1812.02425)** (AAAI 2019, **Oral**).
